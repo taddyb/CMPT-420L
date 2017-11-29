@@ -70,7 +70,7 @@ void setup() {
   pinMode(analogPin3, OUTPUT);
 
   //plays the function for the startup song
-  startingSong();
+  startingSong(1);
 
   // set up the switch pin as an input
   pinMode(switchPin, INPUT);
@@ -256,13 +256,20 @@ void loop() {
         lcd.setCursor(0,0);
         switch(var){
           case 0:
-          lcd.print("Sorry, No");
+          lcd.print("Playing");
           lcd.setCursor(0,1);
-          lcd.print("Song Here");
+          lcd.print("Startup Song");
           delay(1000);
           lcd.clear();
+           lcd.setCursor(0,0);
+          lcd.print("by");
+          lcd.setCursor(0,1);
+          lcd.print("Tadd Bindas");
+          delay(1000);
+          lcd.clear();
+          startingSong(4);
            lcd.setCursor(0,0); 
-        lcd.print("Select Song");
+        lcd.print("Select song");
         lcd.setCursor(0,1);
         lcd.print(var);
           break;
@@ -312,46 +319,48 @@ void loop() {
   }
 }
 
-void startingSong(){
-  tone(13, 440);
- digitalWrite(analogPin0, HIGH);
-  delay(500);
-  tone(13, 493.88);
-  digitalWrite(analogPin0, LOW);
-  digitalWrite(analogPin1, HIGH);
-  delay(500);
-  tone(13, 523.25);
-  digitalWrite(analogPin2, HIGH);
-  digitalWrite(analogPin1, LOW);
-  delay(500);
-  tone(13, 587.33);
-   digitalWrite(analogPin2, LOW);
-  digitalWrite(analogPin3, HIGH);
-  delay(500);
-  tone(13, 523.25);
-  digitalWrite(analogPin2, HIGH);
-  digitalWrite(analogPin3, LOW);
-  delay(500);
-  tone(13, 493.88);
-  digitalWrite(analogPin2, LOW);
-  digitalWrite(analogPin1, HIGH);
-  delay(500);
-  tone(13, 440);
+void startingSong(int count){
+  while(count > 0){
+    tone(13, 440);
    digitalWrite(analogPin0, HIGH);
-  digitalWrite(analogPin1, LOW);
-  delay(500);
-  tone(13, 587.33);
-   digitalWrite(analogPin0, HIGH);
-  digitalWrite(analogPin1, HIGH);
-  digitalWrite(analogPin2, HIGH);
-  digitalWrite(analogPin3, HIGH);
-  delay(1000);
-   digitalWrite(analogPin0, LOW);
-  digitalWrite(analogPin1, LOW);
-  digitalWrite(analogPin2, LOW);
-  digitalWrite(analogPin3, LOW);
-  noTone(13);
-  
+    delay(500);
+    tone(13, 493.88);
+    digitalWrite(analogPin0, LOW);
+    digitalWrite(analogPin1, HIGH);
+    delay(500);
+    tone(13, 523.25);
+    digitalWrite(analogPin2, HIGH);
+    digitalWrite(analogPin1, LOW);
+    delay(500);
+    tone(13, 587.33);
+     digitalWrite(analogPin2, LOW);
+    digitalWrite(analogPin3, HIGH);
+    delay(500);
+    tone(13, 523.25);
+    digitalWrite(analogPin2, HIGH);
+    digitalWrite(analogPin3, LOW);
+    delay(500);
+    tone(13, 493.88);
+    digitalWrite(analogPin2, LOW);
+    digitalWrite(analogPin1, HIGH);
+    delay(500);
+    tone(13, 440);
+     digitalWrite(analogPin0, HIGH);
+    digitalWrite(analogPin1, LOW);
+    delay(500);
+    tone(13, 587.33);
+     digitalWrite(analogPin0, HIGH);
+    digitalWrite(analogPin1, HIGH);
+    digitalWrite(analogPin2, HIGH);
+    digitalWrite(analogPin3, HIGH);
+    delay(1000);
+     digitalWrite(analogPin0, LOW);
+    digitalWrite(analogPin1, LOW);
+    digitalWrite(analogPin2, LOW);
+    digitalWrite(analogPin3, LOW);
+    noTone(13);
+    count --;
+  }
 }
 
 void travisScott(int count){
@@ -392,4 +401,3 @@ void travisScott(int count){
   }
   
 }
-
